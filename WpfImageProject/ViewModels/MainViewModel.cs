@@ -22,10 +22,6 @@ namespace WpfImageNet8.ViewModels
         private ICommand _loadImageCommand;
         private ICommand _deleteImageCommand;
 
-        public MainViewModel()
-        {
-        }
-
         public string ImagePath
         {
             get => _imagePath;
@@ -94,7 +90,7 @@ namespace WpfImageNet8.ViewModels
                                 ImageFileName = Path.GetFileName(destPath);
                                 break;
                             case "2":
-                                BitmapImage bitmapImage = new BitmapImage();
+                                BitmapImage bitmapImage = new();
                                 bitmapImage.BeginInit();
                                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                                 bitmapImage.UriSource = new Uri(Path.GetFullPath(destPath));
