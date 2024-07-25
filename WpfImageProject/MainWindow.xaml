@@ -6,22 +6,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:WpfImageNet8.ViewModels"
         Title="Exmaple of loading images"
-        Width="800" Height="450"
+        Width="800" Height="850"
         d:DataContext="{d:DesignInstance vm:MainViewModel}"
         mc:Ignorable="d">
-    <StackPanel Orientation="Vertical">
-        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Example of locking image by Image control"/>
-        <DockPanel>
-            <Image Width="300" Height="300"
-                   Source="{Binding ImagePath}"/>
-            <StackPanel VerticalAlignment="Center">
-                <Button Command="{Binding LoadImageCommand}"
-                        CommandParameter="1" Content="Load Image"
-                        Style="{StaticResource ButtonStyle}"/>
-                <Button Command="{Binding DeleteImageCommand}"
-                        CommandParameter="1" Content="Delete Image"
-                        Style="{StaticResource ButtonStyle}"/>
-            </StackPanel>
-        </DockPanel>
+    <StackPanel Margin="10">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Example of loading image with file locking"/>
+            <DockPanel>
+                <Border Style="{StaticResource ImageBorderStyle}">
+                    <Image Width="300" Height="300"
+                           Source="{Binding ImagePath}"/>
+                </Border>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding ImageFileName}"/>
+                    <Button Command="{Binding LoadImageCommand}"
+                            CommandParameter="1" Content="Load Image"
+                            Style="{StaticResource ButtonStyle}"/>
+                    <Button Command="{Binding DeleteImageCommand}"
+                            CommandParameter="1" Content="Delete Image"
+                            Style="{StaticResource ButtonStyle}"/>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+        <Border Style="{StaticResource LineStyle}"/>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="Example of loading image without file locking"/>
+            <DockPanel>
+                <Border Style="{StaticResource ImageBorderStyle}">
+                    <Image Width="300" Height="300"
+                           Source="{Binding ImageSecond}"/>
+                </Border>
+                <StackPanel VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource TextBlockStyle}" Text="{Binding ImageSecondFileName}"/>
+                    <Button Command="{Binding LoadImageCommand}"
+                            CommandParameter="2" Content="Load Image"
+                            Style="{StaticResource ButtonStyle}"/>
+                    <Button Command="{Binding DeleteImageCommand}"
+                            CommandParameter="2" Content="Delete Image"
+                            Style="{StaticResource ButtonStyle}"/>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
     </StackPanel>
 </Window>
